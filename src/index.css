@@ -1,0 +1,13 @@
+body {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  /* place-items: center;
+  min-width: 320px;
+  min-height: 100vh; */
+}
+ ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
