@@ -1,22 +1,29 @@
 import Options from "components/Options/Options";
 import Description from "components/Description/Description";
 import { useState } from "react";
+import Feedback from './components/Feedback/Feedback'
 
 const categories = ["Good", "Neutral", "Bad", "Reset"];
 
 function App() {
-  const [value, setValue] = useState(0);
+   const [feedback, setFeedback] = useState({
+    Good: 0,
+    Neutral: 0,
+    Bad: 0,
+  });
 
-  const handler = () => {
-    setValue((prev) => prev + 1);
-    // console.log(prev);
+  const handler = (name) => {
+    setFeedback(prev => ({
+      ...prev,
+      [name]: prev[name] + 1,
+    }));
   };
 
   return (
     <>
       <Description />
-      <Options categories={categories} handler={handler} />
-      <p>hello</p>
+      <Options categories={categories}   handler={handler}/>
+      <Feedback  feedback={feedback}   />
     </>
   );
 }
