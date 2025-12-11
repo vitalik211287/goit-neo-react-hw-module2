@@ -3,7 +3,7 @@ import Description from "components/Description/Description";
 import { useState } from "react";
 import Feedback from './components/Feedback/Feedback'
 
-const categories = ["Good", "Neutral", "Bad", "Reset"];
+const categories = ["Good","Neutral","Bad"];
 
 function App() {
    const [feedback, setFeedback] = useState({
@@ -19,11 +19,19 @@ function App() {
     }));
   };
 
+  const handlerReset = ()=>{
+     setFeedback({
+    Good: 0,
+    Neutral: 0,
+    Bad: 0,
+  })
+  }
   return (
     <>
       <Description />
-      <Options categories={categories}   handler={handler}/>
-      <Feedback  feedback={feedback}   />
+      <Options categories={categories} handlerReset={handlerReset} handler={handler} />
+      <Feedback  handler={handler} feedback={feedback} />
+     
     </>
   );
 }

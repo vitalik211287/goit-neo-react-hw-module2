@@ -1,17 +1,17 @@
 import css from "../Options/Options.module.css";
 import OptionItem from "../Options/OptionItem";
-// import { createLogger } from "vite";
 
-function Options({ categories, handler}) {
-  console.log({ categories });
-   console.log({ handler });
+function Options({ categories, handler, handlerReset}) {
   return (
     <ul className={css.item}>
-      {categories.map((name, index) => {
-        console.log({index})
-        return <OptionItem key={name} id={name} name={name} handler=
-        {handler} />;
-      })}
+      {categories.map((name) => (
+        <OptionItem
+          key={name}
+          name={name}
+          handler={handler}
+        />
+      ))}
+      <button  type="button" onClick={handlerReset}>Reset</button>
     </ul>
   );
 }

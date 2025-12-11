@@ -1,8 +1,7 @@
-function OptionItem({ name , handler, id}) {
-    console.log({ id });
+function OptionItem({ name , handler}) {
   return (
-    <li key={id}>
-      <button type="button" className="feedbackBtn" onClick={()=> handler(id)}>
+  <li>
+      <button  onClick={() => handler(name)}>
         {name}
       </button>
     </li>

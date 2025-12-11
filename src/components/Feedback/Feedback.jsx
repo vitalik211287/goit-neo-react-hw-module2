@@ -1,8 +1,10 @@
+import css from './Feedback.module.css'
+
 function Feedback({ feedback }) {
   return (
-    <ul>
+    <ul className={css.feedback}>
       {Object.entries(feedback).map(([name, value]) => (
-        <li key={name}>
+        <li className={css.feedbackItem} key={name}>
           {name}: {value}
         </li>
       ))}
