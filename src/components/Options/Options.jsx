@@ -1,17 +1,17 @@
 import css from "../Options/Options.module.css";
 import OptionItem from "../Options/OptionItem";
 
-function Options({ categories, handler, handlerReset}) {
+function Options({ categories, handler, handlerReset, totalFeedback }) {
   return (
     <ul className={css.item}>
       {categories.map((name) => (
-        <OptionItem
-          key={name}
-          name={name}
-          handler={handler}
-        />
+        <OptionItem key={name} name={name} handler={handler} />
       ))}
-      <button  type="button" onClick={handlerReset}>Reset</button>
+      {totalFeedback > 0 && (
+        <button type="button" onClick={handlerReset}>
+          Reset
+        </button>
+      )}
     </ul>
   );
 }
