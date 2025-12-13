@@ -1,14 +1,18 @@
-import css from './Feedback.module.css'
+import css from "./Feedback.module.css";
+import FeedbackItem from "./FeedbackItem";
 
-function Feedback({ feedback }) {
+function Feedback({ feedback, totalFeedback, positiveFeedback }) {
   return (
-    <ul className={css.feedback}>
-      {Object.entries(feedback).map(([name, value]) => (
-        <li className={css.feedbackItem} key={name}>
-          {name}: {value}
-        </li>
-      ))}
-    </ul>
+    <div>
+      <ul className={css.feedback}>
+        {Object.entries(feedback).map(([name, value]) => (
+          <FeedbackItem key={name} name={name} value={value} />
+        ))}
+      </ul>
+
+      <p>Total: {totalFeedback}</p>
+      <p>Positive: {positiveFeedback}%</p>
+    </div>
   );
 }
 

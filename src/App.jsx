@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import Feedback from "components/Feedback/Feedback";
 import Notification from "components/Notification/Notification";
 
-const categories = ["Good", "Neutral", "Bad"];
+const categories = ["good", "neutral", "bad"];
 
 function App() {
 const [feedback, setFeedback] = useState(() => {
   const saved = localStorage.getItem("feedback");
   return saved
     ? JSON.parse(saved)
-    : { Good: 0, Neutral: 0, Bad: 0 };
+    : { good: 0, neutral: 0, bad: 0 };
 });
 
   useEffect(() => {
@@ -27,15 +27,14 @@ const [feedback, setFeedback] = useState(() => {
 
   const handlerReset = () => {
     setFeedback({
-      Good: 0,
-      Neutral: 0,
-      Bad: 0,
+      good: 0,
+      neutral: 0,
+      bad: 0,
     });
   };
 
-  const totalFeedback = feedback.Good + feedback.Neutral + feedback.Bad;
-  console.log(totalFeedback);
-  const positiveFeedback = Math.round((feedback.Good / totalFeedback) * 100);
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
 
   return (
     <>
@@ -49,8 +48,11 @@ const [feedback, setFeedback] = useState(() => {
 
       {totalFeedback > 0 ? (
         <>
-          <Feedback handler={handler} feedback={feedback} />
-          <p>Positive: {positiveFeedback}%</p>
+          <Feedback
+            feedback={feedback}
+            totalFeedback={totalFeedback}
+            positiveFeedback={positiveFeedback}
+          />
         </>
       ) : (
         <Notification />

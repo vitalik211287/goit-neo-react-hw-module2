@@ -3,16 +3,18 @@ import OptionItem from "../Options/OptionItem";
 
 function Options({ categories, handler, handlerReset, totalFeedback }) {
   return (
-    <ul className={css.item}>
-      {categories.map((name) => (
-        <OptionItem key={name} name={name} handler={handler} />
-      ))}
+    <div className={css.item}>
+      <ul className={css.item}>
+        {categories.map((name) => (
+          <OptionItem key={name} name={name} handler={handler} />
+        ))}
+      </ul>
       {totalFeedback > 0 && (
         <button type="button" onClick={handlerReset}>
           Reset
         </button>
       )}
-    </ul>
+    </div>
   );
 }
 
